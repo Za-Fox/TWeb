@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Face Off Bar</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color:#111;
+      color:white;
+    }
+
+    header{
+      background:#000;
+      padding:20px;
+      text-align:center;
+    }
+
+    header h1{
+      margin:0;
+      color:gold;
+    }
+
+    header p{
+      margin:5px 0 0;
+      color:#ccc;
+    }
+
+    nav{
+      background:#222;
+      text-align:center;
+      padding:10px;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin:0 15px;
+      font-weight:bold;
+      display:inline-block;
+      padding:8px 10px;
+      border-radius:6px;
+    }
+
+    nav a:hover{
+      color:gold;
+    }
+
+    nav a[aria-current="page"]{
+      outline:2px solid gold;
+      color:gold;
+    }
+
+    .container{
+      width:90%;
+      margin:auto;
+      padding:30px 0;
+    }
+
+    .hero{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .hero h2{
+      color:gold;
+    }
+
+    .about{
+      display:flex;
+      gap:30px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .about img{
+      width:400px;
+      max-width:100%;
+      border-radius:10px;
+      display:block;
+    }
+
+    .about p{
+      max-width:500px;
+      line-height:1.6;
+    }
+
+    .features{
+      margin-top:40px;
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .card{
+      background:#1c1c1c;
+      padding:20px;
+      border-radius:10px;
+      flex:1;
+      min-width:250px;
+      text-align:center;
+    }
+
+    .card h3{
+      color:gold;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:15px;
+      padding:10px 20px;
+      background:gold;
+      color:black;
+      text-decoration:none;
+      border-radius:5px;
+      font-weight:bold;
+      border:0;
+      cursor:pointer;
+    }
+
+    .btn:hover{
+      background:orange;
+    }
+
+    footer{
+      background:#000;
+      text-align:center;
+      padding:15px;
+      margin-top:40px;
+      color:#aaa;
+    }
+
+    @media(max-width:800px){
+      .about{
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Face Off Bar</h1>
+    <p>Locul unde distractia si relaxarea se intalnesc</p>
+  </header>
+
+  <nav>
+    <a href="./index.html" aria-current="page">Acasa</a>
+    <a href="./meniu.html">Meniu</a>
+    <a href="./galerie.html">Galerie</a>
+    <a href="./contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <section class="hero">
+      <h2>Bine ai venit la Face Off</h2>
+      <p>
+        Muzica buna, cocktailuri premium si o atmosfera relaxanta
+        pentru seri memorabile alaturi de prieteni.
+      </p>
+
+      <a id="btnMeniu" href="./meniu.html" class="btn">Vezi Meniul</a>
+    </section>
+
+    <section class="about">
+      <img
+        src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepN8o_OqCpQoh6iVa_8_iGBenvYzbyG3DBwXI6vJ_d5N9IStJJyZ_TyATRIlv7iBAAp20oSj2zTaOHrosWBOR_ahjEYy3u_TzIvaOF8clCUOJN1zjG8gj_rFrx_oq4F2l5o5ti-=s1360-w1360-h1020-rw"
+        alt="Face Off Bar"
+      />
+
+      <p>
+        Face Off Bar este un bar modern destinat persoanelor care
+        doresc sa petreaca timp de calitate intr-o atmosfera
+        prietenoasa. Interiorul este amenajat intr-un stil modern,
+        fiind locul ideal pentru intalniri sau evenimente speciale.
+      </p>
+    </section>
+
+    <section class="features">
+      <div class="card">
+        <h3>Ambient Modern</h3>
+        <p>Lumini ambientale si spatiu confortabil.</p>
+      </div>
+
+      <div class="card">
+        <h3>Cocktailuri Premium</h3>
+        <p>Bauturi preparate din ingrediente de calitate.</p>
+      </div>
+
+      <div class="card">
+        <h3>Atmosfera Relaxanta</h3>
+        <p>Perfect pentru prieteni si evenimente.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.getElementById("btnMeniu").addEventListener("click", function () {
+    });
+  </script>
+
+</body>
+</html>
