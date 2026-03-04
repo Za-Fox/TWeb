@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Face Off Bar</title>
+
+  <link rel="stylesheet" href="acasa.css" />
+</head>
+
+<body>
+
+  <header>
+    <h1>Face Off Bar</h1>
+    <p>Locul unde distractia si relaxarea se intalnesc</p>
+  </header>
+
+  <nav>
+    <a href="acasa.html" aria-current="page">Acasa</a>
+    <a href="meniu.html">Meniu</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <section class="hero">
+      <h2>Bine ai venit la Face Off</h2>
+      <p>
+        Muzica buna, cocktailuri premium si o atmosfera relaxanta
+        pentru seri memorabile alaturi de prieteni.
+      </p>
+
+      <a id="btnMeniu" href="meniu.html" class="btn">Vezi Meniul</a>
+    </section>
+
+    <section class="about">
+      <img
+        src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepN8o_OqCpQoh6iVa_8_iGBenvYzbyG3DBwXI6vJ_d5N9IStJJyZ_TyATRIlv7iBAAp20oSj2zTaOHrosWBOR_ahjEYy3u_TzIvaOF8clCUOJN1zjG8gj_rFrx_oq4F2l5o5ti-=s1360-w1360-h1020-rw"
+        alt="Face Off Bar"
+      />
+
+      <p>
+        Face Off Bar este un bar modern destinat persoanelor care
+        doresc sa petreaca timp de calitate intr-o atmosfera
+        prietenoasa. Interiorul este amenajat intr-un stil modern,
+        fiind locul ideal pentru intalniri sau evenimente speciale.
+      </p>
+    </section>
+
+    <section class="features">
+      <div class="card">
+        <h3>Ambient Modern</h3>
+        <p>Lumini ambientale si spatiu confortabil.</p>
+      </div>
+
+      <div class="card">
+        <h3>Cocktailuri Premium</h3>
+        <p>Bauturi preparate din ingrediente de calitate.</p>
+      </div>
+
+      <div class="card">
+        <h3>Atmosfera Relaxanta</h3>
+        <p>Perfect pentru prieteni si evenimente.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+    document.getElementById("btnMeniu").addEventListener("click", function () {
+    });
+  </script>
+
+</body>
+</html>
