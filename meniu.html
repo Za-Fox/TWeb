@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meniu — Face Off Bar</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="meniu.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Meniu Face Off</h1>
+    <p>Selecția noastră de cocktailuri & băuturi</p>
+  </header>
+
+  <nav>
+    <a href="acasa.html">Acasă</a>
+    <a href="meniu.html">Meniu</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- Căutare -->
+    <div class="search-wrap reveal">
+      <input type="text" id="menu-search" placeholder="Caută în meniu..." />
+    </div>
+
+    <!-- Filtre -->
+    <div class="filter-bar reveal">
+      <button class="filter-btn activ" data-cat="Noi Oferim:">Noi Oferim:</button>
+      <button class="filter-btn" data-cat="cocktails">Cocktails</button>
+      <button class="filter-btn" data-cat="alcoolice">Alcoolice</button>
+      <button class="filter-btn" data-cat="non-alcoolice">Non-Alcoolice</button>
+      <button class="filter-btn" data-cat="cafea">Cafea</button>
+      <button class="filter-btn" data-cat="hookah">Hookah</button>
+    </div>
+
+    <!-- Cocktails -->
+    <div class="cat-section" data-cat="cocktails">
+      <div class="section-title">Cocktails</div>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Signature</h3>
+          <div class="menu-item"><span>Verde Mortal</span><span class="price">139 MDL</span></div>
+          <div class="menu-item"><span>El Contrabando</span><span class="price">139 MDL</span></div>
+          <div class="menu-item"><span>Oro y Trufa</span><span class="price">159 MDL</span></div>
+        </div>
+        <div class="menu-card">
+          <h3>Clasice</h3>
+          <div class="menu-item"><span>Mojito</span><span class="price">85 MDL</span></div>
+          <div class="menu-item"><span>Martini</span><span class="price">90 MDL</span></div>
+          <div class="menu-item"><span>Old Fashioned</span><span class="price">95 MDL</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alcoolice -->
+    <div class="cat-section" data-cat="alcoolice">
+      <div class="section-title">Băuturi Alcoolice</div>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Whisky</h3>
+          <div class="menu-item"><span>Jameson</span><span class="price">70 MDL</span></div>
+          <div class="menu-item"><span>Jack Daniel's</span><span class="price">75 MDL</span></div>
+        </div>
+        <div class="menu-card">
+          <h3>Vodka</h3>
+          <div class="menu-item"><span>Absolut</span><span class="price">65 MDL</span></div>
+          <div class="menu-item"><span>Grey Goose</span><span class="price">85 MDL</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Non-Alcoolice -->
+    <div class="cat-section" data-cat="non-alcoolice">
+      <div class="section-title">Băuturi Non-Alcoolice</div>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Fresh &amp; Sucuri</h3>
+          <div class="menu-item"><span>Fresh Portocale</span><span class="price">45 MDL</span></div>
+          <div class="menu-item"><span>Limonadă</span><span class="price">40 MDL</span></div>
+        </div>
+        <div class="menu-card">
+          <h3>Răcoritoare</h3>
+          <div class="menu-item"><span>Coca-Cola</span><span class="price">30 MDL</span></div>
+          <div class="menu-item"><span>Red Bull</span><span class="price">45 MDL</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cafea -->
+    <div class="cat-section" data-cat="cafea">
+      <div class="section-title">Cafea</div>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Preparate</h3>
+          <div class="menu-item"><span>Espresso</span><span class="price">25 MDL</span></div>
+          <div class="menu-item"><span>Cappuccino</span><span class="price">35 MDL</span></div>
+          <div class="menu-item"><span>Latte</span><span class="price">40 MDL</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hookah -->
+    <div class="cat-section" data-cat="hookah">
+      <div class="section-title">Hookah</div>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Narghilea</h3>
+          <div class="menu-item"><span>Classic</span><span class="price">250 MDL</span></div>
+          <div class="menu-item"><span>Premium</span><span class="price">300 MDL</span></div>
+        </div>
+      </div>
+    </div>
+
+    <a href="acasa.html" class="btn" style="margin-top:10px;">← Înapoi la Acasă</a>
+
+  </div>
+
+  <script src="efecte.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Filtrare categorii */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('activ'));
+        btn.classList.add('activ');
+        const cat = btn.dataset.cat;
+        document.querySelectorAll('.cat-section').forEach(sec => {
+          const ascunde = cat !== 'toate' && sec.dataset.cat !== cat;
+          sec.classList.toggle('hidden', ascunde);
+        });
+      });
+    });
+
+    /* Căutare live */
+    document.getElementById('menu-search').addEventListener('input', function() {
+      const q = this.value.toLowerCase().trim();
+      document.querySelectorAll('.menu-item').forEach(item => {
+        const name = item.querySelector('span:first-child')?.textContent.toLowerCase() || '';
+        item.style.display = (!q || name.includes(q)) ? '' : 'none';
+      });
+      /* Ascunde cardurile goale */
+      document.querySelectorAll('.menu-card').forEach(card => {
+        const visible = [...card.querySelectorAll('.menu-item')].some(i => i.style.display !== 'none');
+        card.style.display = visible ? '' : 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
