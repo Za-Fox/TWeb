@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galerie — Face Off Bar</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="galerie.css" />
+</head>
+<body>
+
+  <div class="top-line"></div>
+
+  <header>
+    <h1>Galerie</h1>
+    <p>Imagini din barul nostru</p>
+  </header>
+
+  <nav>
+    <a href="acasa.html">Acasă</a>
+    <a href="meniu.html">Meniu</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <div class="slider reveal">
+
+      <input type="radio" name="slides" id="s1" checked>
+      <input type="radio" name="slides" id="s2">
+      <input type="radio" name="slides" id="s3">
+
+      <div class="track">
+        <div class="slide">
+          <div class="pic"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpYlj3xAFqbd1OhoXLxxeuSZls-KjlrJcevw&s" alt="Face Off Bar 1"></div>
+          <div class="pic"><img src="https://i.simpalsmedia.com/afisha.md/places/original/fdb33e3db6f4f62ae16836732c929a16.png" alt="Face Off Bar 2"></div>
+          <div class="pic"><img src="https://avatars.mds.yandex.net/get-altay/10142335/2a0000018b2994d97b4009cd4691d8a3bd17/L_height" alt="Face Off Bar 3"></div>
+        </div>
+        <div class="slide">
+          <div class="pic"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH-xlgYvDmqTMqhD-gPzTjXO9p9Nsq3fP1Cg&s" alt="Face Off Bar 4"></div>
+          <div class="pic"><img src="https://avatars.mds.yandex.net/get-altay/9704097/2a0000018b2992a302250dae699ebc35db60/L_height" alt="Face Off Bar 5"></div>
+          <div class="pic"><img src="https://avatars.mds.yandex.net/get-altay/6506385/2a0000018b29949ac71d37ceb3662033bf82/L_height" alt="Face Off Bar 6"></div>
+        </div>
+        <div class="slide">
+          <div class="pic"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNXMVRTFMarOOH-t4Yd1byiaazxxbhXMlRVg&s" alt="Face Off Bar 7"></div>
+          <div class="pic"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxNIAQ7onD6_2cizWxG-dOIWuQPuMSyIu42Q&s" alt="Face Off Bar 8"></div>
+          <div class="pic"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9a7MSbuvOj_WP7YxzPzikMerLAM2Iaf_iIQ&s" alt="Face Off Bar 9"></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <label class="arrow prev p1" for="s3">&#x2039;</label>
+        <label class="arrow prev p2" for="s1">&#x2039;</label>
+        <label class="arrow prev p3" for="s2">&#x2039;</label>
+        <label class="arrow next n1" for="s2">&#x203A;</label>
+        <label class="arrow next n2" for="s3">&#x203A;</label>
+        <label class="arrow next n3" for="s1">&#x203A;</label>
+      </div>
+
+      <div class="dots">
+        <div class="dot d1"></div>
+        <div class="dot d2"></div>
+        <div class="dot d3"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <button id="lb-close">&times;</button>
+    <button id="lb-prev">&#x2039;</button>
+    <img id="lb-img" src="" alt="">
+    <button id="lb-next">&#x203A;</button>
+    <div id="lb-counter"></div>
+  </div>
+
+  <script src="efecte.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /*Lightbox */
+    let lbImages = [], lbCurrent = 0;
+
+    function lbShow(idx) {
+      lbCurrent = (idx + lbImages.length) % lbImages.length;
+      document.getElementById('lb-img').src = lbImages[lbCurrent].src;
+      document.getElementById('lb-img').alt = lbImages[lbCurrent].alt;
+      document.getElementById('lb-counter').textContent = `${lbCurrent + 1} / ${lbImages.length}`;
+    }
+
+    function lbOpen(idx) {
+      lbImages = [...document.querySelectorAll('.pic img')];
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      lbShow(idx);
+    }
+
+    function lbClose() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lb-close').addEventListener('click', lbClose);
+    document.getElementById('lb-prev').addEventListener('click', e => { e.stopPropagation(); lbShow(lbCurrent - 1); });
+    document.getElementById('lb-next').addEventListener('click', e => { e.stopPropagation(); lbShow(lbCurrent + 1); });
+    document.getElementById('lightbox').addEventListener('click', e => { if (e.target === e.currentTarget || e.target.id === 'lb-img') lbClose(); });
+
+    document.addEventListener('click', e => {
+      const img = e.target.closest('.pic img');
+      if (!img) return;
+      const all = [...document.querySelectorAll('.pic img')];
+      lbOpen(all.indexOf(img));
+    });
+
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'Escape')     lbClose();
+      if (e.key === 'ArrowLeft')  lbShow(lbCurrent - 1);
+      if (e.key === 'ArrowRight') lbShow(lbCurrent + 1);
+    });
+
+    /* Swipe */
+    let touchX = 0;
+    const slider = document.querySelector('.slider');
+    slider.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+    slider.addEventListener('touchend', e => {
+      const diff = touchX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) < 40) return;
+      const radios = [...document.querySelectorAll('input[name="slides"]')];
+      const cur = radios.findIndex(r => r.checked);
+      radios[(cur + (diff > 0 ? 1 : -1) + radios.length) % radios.length].checked = true;
+    });
+
+    /*  Auto-play  */
+    let paused = false;
+    slider.addEventListener('mouseenter', () => paused = true);
+    slider.addEventListener('mouseleave', () => paused = false);
+    setInterval(() => {
+      if (paused || document.getElementById('lightbox').classList.contains('open')) return;
+      const radios = [...document.querySelectorAll('input[name="slides"]')];
+      const cur = radios.findIndex(r => r.checked);
+      radios[(cur + 1) % radios.length].checked = true;
+    }, 5000);
+  </script>
+
+</body>
+</html>
