@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Face Off Bar</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Contact</h1>
+    <p>Suntem aici pentru tine</p>
+  </header>
+
+  <nav>
+    <a href="acasa.html">Acasă</a>
+    <a href="meniu.html">Meniu</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <div class="contact-grid reveal">
+
+      <!-- Hartă -->
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps?q=Face+Off,+Chisinau&output=embed"
+          allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+
+      <!-- Info -->
+      <div class="contact-info">
+        <h2>Vizitează-ne</h2>
+
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Adresă</div>
+            <div class="info-value">Bulevardul Moscova 21<br>MD-2046, Chișinău, Republica Moldova</div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">Telefon</div>
+            <div class="info-value">
+              <a href="tel:+37378957760">0789 57 760</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-icon">🕐</div>
+          <div>
+            <div class="info-label">Program</div>
+            <div class="info-value">
+              Luni – Duminică: 05:00 – 03:00
+              <br>
+              <span id="bar-status" class="status-badge">...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="social">
+          <a href="https://www.instagram.com/faceoff_cocktails/" target="_blank" title="Instagram">IG</a>
+          <a href="https://www.facebook.com/p/Face-Off-61550629761569/" target="_blank" title="Facebook">FB</a>
+          <a href="https://www.tiktok.com/@faceoffcocktails" target="_blank" title="TikTok">TT</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Formular -->
+    <div id="contact-form-section" class="reveal">
+      <div class="section-title" style="margin-bottom:20px;">Trimite-ne un mesaj</div>
+      <div class="form-box">
+        <div class="form-group">
+          <input id="cf-name"    type="text"  placeholder="Numele tău *" />
+          <input id="cf-email"   type="email" placeholder="Email *" />
+          <input id="cf-subject" type="text"  placeholder="Subiect" />
+          <textarea id="cf-msg"  rows="5"     placeholder="Mesajul tău *"></textarea>
+          <button id="cf-submit" class="btn btn-solid">Trimite mesajul</button>
+        </div>
+        <div id="cf-feedback" style="display:none; margin-top:16px; padding:12px 16px; border-radius:8px; font-size:.88rem; font-weight:500;"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="efecte.js"></script>
+  <script src="contact.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Status bar deschis/închis */
+    function updateStatus() {
+      const h = new Date().getHours();
+      const open = h >= 5 || h < 3;
+      const el = document.getElementById('bar-status');
+      el.textContent = open ? '● Deschis acum' : '● Închis momentan';
+      el.className = 'status-badge ' + (open ? 'open' : 'closed');
+    }
+    updateStatus();
+    setInterval(updateStatus, 60000);
+  </script>
+
+</body>
+</html>
